@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Followers from './Followers';
 
 const UserCard = props => {
+  console.log(props)
   return (
     <div>
       <h1>{props.data.name}</h1>

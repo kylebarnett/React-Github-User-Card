@@ -8,19 +8,17 @@ class App extends React.Component {
     this.state = {
       data: [],
       followerData: [],
-      loading: false
+      loading: true
     }
   }
   componentDidMount() {
     fetch('https://api.github.com/users/kylebarnett')
       .then(res => res.json())
       .then(res => this.setState({ data: res }))
-      .then(res => this.setState({ loading: true }))
-  }
-  componentDidMount() {
     fetch('https://api.github.com/users/kylebarnett/followers')
       .then(res => res.json())
       .then(res => this.setState({ followerData: res }))
+      .then(res => this.setState({ loading: false }))
   }
 
   render() {
@@ -28,7 +26,7 @@ class App extends React.Component {
     console.log(this.state.followerData)
     return (
       <div className="App">
-        {!this.state.loading ? "Loading Data..." :
+        {this.state.loading ? "Loading Data..." :
           <UserCard
             data={this.state.data}
             followerData={this.state.followerData}
