@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
+import { Route, Link } from 'react-router-dom';
 import UserCard from './components/UserCard';
+import Home from './components/Home';
 
 class App extends React.Component {
   constructor() {
@@ -26,13 +28,8 @@ class App extends React.Component {
     console.log(this.state.followerData)
     return (
       <div className="App">
-        <h1>Github User Cards!</h1>
-        {this.state.loading ? "Loading Data..." :
-          <UserCard
-            data={this.state.data}
-            followerData={this.state.followerData}
-          />
-        }
+        <Route exact path="/" render={(props) => <Home props={props} data={this.state.data} followerData={this.state.followerData} />} />
+        <Route exact path="/followers" render={(props) => <UserCard props={props} data={this.state.data} followerData={this.state.followerData} />} />
       </div>
     );
   }
