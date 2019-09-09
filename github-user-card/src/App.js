@@ -26,6 +26,7 @@ class App extends React.Component {
     console.log(this.state.followerData)
     return (
       <div className="App">
+        <h1>Github User Cards!</h1>
         {this.state.loading ? "Loading Data..." :
           <UserCard
             data={this.state.data}
